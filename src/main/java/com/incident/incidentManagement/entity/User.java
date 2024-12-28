@@ -24,6 +24,4 @@ public class User extends BaseEntity {
     @JsonIgnore  // Ignoring the location during serialization
     private Address address;
 
-
-
 }
