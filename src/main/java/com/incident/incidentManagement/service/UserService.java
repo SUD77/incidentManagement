@@ -3,6 +3,7 @@ package com.incident.incidentManagement.service;
 import com.incident.incidentManagement.dtos.UserDto;
 import com.incident.incidentManagement.entity.User;
 import com.incident.incidentManagement.exceptions.UserAlreadyExistsException;
+import com.incident.incidentManagement.exceptions.UserNotFoundException;
 import com.incident.incidentManagement.repository.UserRepository;
 import com.incident.incidentManagement.service.mapper.IncidentManagementMapper;
 import jakarta.transaction.Transactional;
@@ -28,6 +29,11 @@ public class UserService {
 
     @Transactional
     public void deleteUser(String userName) {
+        User existingUser = userRepository.findByUserName(userName);
+
+        if (existingUser == null) {
+            throw new UserNotFoundException(userName);
+        }
         userRepository.deleteByUserName(userName);
     }
 

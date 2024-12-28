@@ -14,4 +14,11 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.CONFLICT)  // 409 Conflict
                 .body(ex.getMessage());
     }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<String> handleUserNotFoundException(UserNotFoundException ex) {
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)  // 404 Not Found
+                .body(ex.getMessage());
+    }
 }
