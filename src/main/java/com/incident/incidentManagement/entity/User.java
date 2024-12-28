@@ -14,7 +14,10 @@ import lombok.EqualsAndHashCode;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User extends BaseEntity {
 
-    private String name;
+    private String userName;
+    private String firstName;
+    private String lastName;
+    private String password;
     private String email;
     private String phone;
     @OneToOne(cascade = CascadeType.ALL , orphanRemoval = true, fetch = FetchType.LAZY)
