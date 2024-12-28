@@ -32,5 +32,10 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
+    @GetMapping("/{userName}")
+    public UserDto findUserByUserName(@PathVariable String userName){
+        return userService.findUserByUserName(userName);
+    }
+
 
 }

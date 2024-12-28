@@ -21,7 +21,7 @@ public class User extends BaseEntity {
     private String email;
     private String phone;
     @OneToOne(cascade = CascadeType.ALL , orphanRemoval = true, fetch = FetchType.LAZY)
-    @JsonIgnore  // Ignoring the location during serialization
+//    @JsonIgnore  // Ignoring the location during serialization
     private Address address;
 
 }

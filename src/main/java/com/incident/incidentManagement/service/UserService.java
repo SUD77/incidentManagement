@@ -67,14 +67,14 @@ public class UserService {
         if (updatedUser.getAddress() != null) {
 
             if (existingUser.getAddress() == null) {
-                existingUser.setAddress(updatedUser.getAddress());
+                existingUser.setAddress(IncidentManagementMapper.INSTANCE.toAddress(updatedUser.getAddress()));
             } else {
                 Address existingAddress = existingUser.getAddress();
 
                 // Check if the address is still valid (not deleted)
                 if (addressRepository.existsById(existingAddress.getId())) {
 
-                    Address updatedAddress = updatedUser.getAddress();
+                    Address updatedAddress = IncidentManagementMapper.INSTANCE.toAddress(updatedUser.getAddress());
 
                     existingAddress.setStreetAddress(updatedAddress.getStreetAddress());
                     existingAddress.setCity(updatedAddress.getCity());
@@ -90,4 +90,16 @@ public class UserService {
         }
     }
 
+    public UserDto findUserByUserName(String userName) {
+        User user=userRepository.findByUserName(userName);
+
+        if(user==null){
+            throw new UserNotFoundException(userName);
+        }
+
+//        //address is lazy loaded. So getting it separately here and setting it.
+//        user.setAddress(addressRepository.getReferenceById(user.getAddress().getId()));
+
+        return IncidentManagementMapper.INSTANCE.toUserDto(user);
+    }
 }
