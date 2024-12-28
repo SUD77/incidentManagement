@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path="/user")
+@RequestMapping(path = "/user")
 public class UserController {
 
 
@@ -16,7 +16,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping(value = "/create-user")
-    public void createUser(@RequestBody UserDto userDto){
+    public void createUser(@RequestBody UserDto userDto) {
         userService.createUser(userDto);
     }
 
@@ -33,7 +33,7 @@ public class UserController {
     }
 
     @GetMapping("/{userName}")
-    public UserDto findUserByUserName(@PathVariable String userName){
+    public UserDto findUserByUserName(@PathVariable String userName) {
         return userService.findUserByUserName(userName);
     }
 

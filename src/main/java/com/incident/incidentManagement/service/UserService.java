@@ -23,7 +23,7 @@ public class UserService {
     private AddressRepository addressRepository;
 
     public void createUser(UserDto userDto) {
-        User existingUser=userRepository.findByUserName(userDto.getUserName());
+        User existingUser = userRepository.findByUserName(userDto.getUserName());
         if (existingUser != null) {
             throw new UserAlreadyExistsException(userDto.getUserName());
         }
@@ -91,14 +91,11 @@ public class UserService {
     }
 
     public UserDto findUserByUserName(String userName) {
-        User user=userRepository.findByUserName(userName);
+        User user = userRepository.findByUserName(userName);
 
-        if(user==null){
+        if (user == null) {
             throw new UserNotFoundException(userName);
         }
-
-//        //address is lazy loaded. So getting it separately here and setting it.
-//        user.setAddress(addressRepository.getReferenceById(user.getAddress().getId()));
 
         return IncidentManagementMapper.INSTANCE.toUserDto(user);
     }
