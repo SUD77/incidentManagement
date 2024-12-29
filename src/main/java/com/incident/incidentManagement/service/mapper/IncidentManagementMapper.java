@@ -1,8 +1,10 @@
 package com.incident.incidentManagement.service.mapper;
 
 import com.incident.incidentManagement.dtos.AddressDto;
+import com.incident.incidentManagement.dtos.IncidentsDto;
 import com.incident.incidentManagement.dtos.UserDto;
 import com.incident.incidentManagement.entity.Address;
+import com.incident.incidentManagement.entity.Incidents;
 import com.incident.incidentManagement.entity.User;
 import org.mapstruct.Builder;
 import org.mapstruct.Mapper;
@@ -21,4 +23,8 @@ public interface IncidentManagementMapper {
     AddressDto toAddressDto(Address address);
 
     Address toAddress(AddressDto addressDto);
+
+    Incidents toIncidents(IncidentsDto incidentsDto);
+
+    IncidentsDto toIncdientsDto(Incidents incidents);
 }

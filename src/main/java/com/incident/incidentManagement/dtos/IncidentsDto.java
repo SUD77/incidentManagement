@@ -18,7 +18,7 @@ public class IncidentsDto {
 
     private Long id;
     private String incidentId;
-    private User reporter;
+    private Long reporterId;
     private String incidentType;
     private String details;
     private LocalDateTime reportedAt;

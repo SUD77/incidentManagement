@@ -20,9 +20,9 @@ public class Incidents extends BaseEntity {
     @Column(name = "incident_id", unique = true, nullable = false)
     private String incidentId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+//    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "reporter_id", nullable = false)
-    private User reporter;
+    private Long reporterId;
 
     @Column(name = "incident_type", nullable = false)
     private String incidentType; // Enterprise or Government
